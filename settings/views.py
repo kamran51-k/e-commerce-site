@@ -7,10 +7,9 @@ def home_view(request):
     context ={}
     navbar_queryset = NavbarModel.objects.all()
     image_queryset = ImageModel.objects.all()
-    category_queryset = CategoryModel.objects.filter()
+    category_queryset = CategoryModel.objects.all()
     context['category_queryset'] = category_queryset
     context['navbar_queryset'] = navbar_queryset
     context['image_queryset'] = image_queryset
     
     return render(request,'index.html',context)
-

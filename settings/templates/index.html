@@ -209,17 +209,41 @@
                 {%endif%}
                 {%if i.category == False %}
                 {%else%}
-                <ul class="dropdown-menu">      
+                <ul class="dropdown-menu">    
+                  {% if i.id == category_queryset.category_id %}  
                   {%for k in category_queryset%} 
-                  {% if k.style_id == i.navbar_id %}
-                  <li><a href="#">{{k.style}}</a></li>
-                  {%endif%}
+                  <li><a href="#" >{{k.style}}</a></li>
                   {%endfor%}
+                  {%endif%}
                 </ul>
               </li>
                 {% endif %}
               {%endfor%}
             </ul>
+            <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script>
+$(document).ready(function (){
+            {
+          let categoryId = $(this).data('id')
+             $.ajax({
+            url: categoryId,
+            method: "GET",
+            success: function (data) {
+                $("#subcategory").html(data)
+
+
+            },
+ 
+            error: function (xhr, err, msg) {
+                console.log(xhr, err, msg);
+            }
+        });
+    }
+        })
+    </script>
           </div><!--/.nav-collapse -->
         </div>
       </div>       
@@ -1886,4 +1910,3 @@
   <script src="{% static 'asserts/js/custom.js' %}"></script> 
 
   </body>
-</html>
