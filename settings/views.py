@@ -13,3 +13,10 @@ def home_view(request):
     context['image_queryset'] = image_queryset
     
     return render(request,'index.html',context)
+
+
+def category_filter_view(request,navbar_id):
+    context = {}
+    categories = CategoryModel.objects.filter(category_id=navbar_id)
+    context['categories'] = categories
+    return render(request,'category_filter.html', context)
