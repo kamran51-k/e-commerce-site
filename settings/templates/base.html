@@ -198,10 +198,12 @@
                   <li><a href="#" class="category_filter" data-id="{% url 'category_filter_page' navbar_id=i.id %}">{{i.title}} {%if i.category %}<span class="caret"></span></a>{%endif%}
                     {%if not i.category %}
                     {%else%}
-                    <ul class="dropdown-menu categories">
-    
+                    <ul class="dropdown-menu categories" >
+                      
+                     
+                      
                     </ul>
-                  </li>
+                    
                     {% endif %}
                   {%endfor%}
                 </ul>
@@ -1071,6 +1073,7 @@
         $(document).ready(function (){
             $('.category_filter').mouseover(function (){
           let categoryId = $(this).data('id')
+
              $.ajax({
             url: categoryId,
             method: "GET",
@@ -1095,4 +1098,4 @@
         })
     </script>
 
-</body>
+  

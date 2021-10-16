@@ -1,6 +1,7 @@
+from django.http import request
 from django.shortcuts import render
 
-from settings.models import CategoryModel, ImageModel, NavbarModel
+from settings.models import CategoryModel, ImageModel, NavbarModel, Products
 
 # Create your views here.
 def home_view(request):
@@ -8,9 +9,11 @@ def home_view(request):
     navbar_queryset = NavbarModel.objects.all()
     image_queryset = ImageModel.objects.all()
     category_queryset = CategoryModel.objects.all()
+    product_queryset = Products.objects.all()
     context['category_queryset'] = category_queryset
     context['navbar_queryset'] = navbar_queryset
     context['image_queryset'] = image_queryset
+    context['product_queryset'] = product_queryset
     
     return render(request,'index.html',context)
 
@@ -20,3 +23,9 @@ def category_filter_view(request,navbar_id):
     categories = CategoryModel.objects.filter(category_id=navbar_id)
     context['categories'] = categories
     return render(request,'category_filter.html', context)
+
+def sub_filter_view(request,sub_id):
+    context = {}
+    subcategories = Products.objects.filter(subcategory_id=sub_id)
+    context['subcategories'] = subcategories
+    return render(request,'sub_filter.html',context)

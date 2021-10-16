@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import URLField
 
 
 # Create your models here.
@@ -9,18 +10,17 @@ class NavbarModel(models.Model):
     def __str__(self):
         return f'{self.title}'
 
-
 class CategoryModel(models.Model):
+    subcategory = models.BooleanField(default=False)
     category_id = models.ManyToManyField('NavbarModel')
     style = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return f'{self.style}'
-
-
 class Products(models.Model):
+    subcategory_id = models.ManyToManyField('CategoryModel')
     name = models.CharField(max_length=100, null=True, blank=True)
 
-
 class ImageModel(models.Model):
-    background_image = models.ImageField(upload_to='image', null=True, blank=True)
+    image = models.ImageField(upload_to='images',null=True,blank=True)
+    
