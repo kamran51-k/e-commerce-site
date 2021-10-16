@@ -17,6 +17,7 @@ class CategoryModel(models.Model):
 
     def __str__(self):
         return f'{self.style}'
+        
 class Products(models.Model):
     subcategory_id = models.ManyToManyField('CategoryModel')
     name = models.CharField(max_length=100, null=True, blank=True)
