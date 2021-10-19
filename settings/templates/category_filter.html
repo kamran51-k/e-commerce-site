@@ -6,43 +6,44 @@
                     {%else%}
                     <ul class="dropdown-menu subcategories" >
                       
-                     
+                    
                       
                     </ul>
                     
                     {% endif %}
                   {%endfor%}
-
-
-<body>
-<script
-src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-crossorigin="anonymous"></script>
-  <script>
-      $(document).ready(function (){
-          $('.sub_filter').mouseover(function (e){
-        let subcategoryId = $(this).data('id')
-           $.ajax({
-          url: subcategoryId,
-          method: "GET",
-          success: function (data) {
-              if (data){
-                  $(".subcategories").html(data)
-              }
-              else{
-                  $(".subcategories").html("Yoxdur")
-              }
-
-
-
-          },
-
-          error: function (xhr, err, msg) {
-              console.log(xhr, err, msg);
-          }
-      });
-  })
-      })
-  </script>
-</body>
+                  <script
+                  src="https://code.jquery.com/jquery-3.6.0.min.js"
+                  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                  crossorigin="anonymous"></script>
+                    <script>
+                        $(document).ready(function (){
+                            $('.sub_filter').mouseover(function (){
+                          let subcategoryId = $(this).data('id')
+                          console.log('Sagollllll')
+                             $.ajax({
+                            url: subcategoryId,
+                            method: "GET",
+                
+                            success: function (data) {
+                                if (data){
+                                    $(".subcategories").html(data)
+                                }
+                                else{
+                                    $(".subcategories").html("Yoxdur")
+                                }
+                
+                
+                
+                            },
+                
+                            error: function (xhr, err, msg) {
+                                console.log(xhr, err, msg);
+                            }
+                        });
+                    })
+                        })
+                    </script>
+                
+                  
+                
