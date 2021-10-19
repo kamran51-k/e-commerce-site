@@ -201,7 +201,7 @@
                     <ul class="dropdown-menu categories" >
                       
                      
-                      
+                    <li><a href="#" data-slug="And more" data-url="{% url 'sub_filter_page' sub_id=i.id %}">{{ and_more  }} </a></li>
                     </ul>
                     
                     {% endif %}
@@ -1097,33 +1097,36 @@
     })
         })
     </script>
-<script>
-  $(document).ready(function (){
-      $('.sub_filter').mouseover(function (){
-    let subcategoryId = $(this).data('id')
-    console.log('Sagollllll')
-       $.ajax({
-      url: subcategoryId,
-      method: "GET",
-
-      success: function (data) {
-          if (data){
-              $(".subcategories").html(data)
-          }
-          else{
-              $(".subcategories").html("Yoxdur")
-          }
 
 
+    <script>
+        $(document).ready(function (){
+            $('.category_filter').mouseover(function (){
+          let subCategoryUrls = $(this).data('url')
 
-      },
+             $.ajax({
+            url: subCategoryUrls,
+            method: "GET",
 
-      error: function (xhr, err, msg) {
-          console.log(xhr, err, msg);
-      }
-  });
-})
-  })
-</script>
+            success: function (data) {
+                if (data){
+                    console.log(data)
+                    $(".categories").html(data)
+                }
+                else{
+                    $(".categories").html("Yoxdur")
+                }
+
+
+
+            },
+
+            error: function (xhr, err, msg) {
+                console.log(xhr, err, msg);
+            }
+        });
+    })
+        })
+    </script>
 
   

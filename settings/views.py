@@ -21,11 +21,15 @@ def home_view(request):
 def category_filter_view(request,navbar_id):
     context = {}
     categories = CategoryModel.objects.filter(category_id=navbar_id)
-    context['categories'] = categories
+    if len(categories) > 2:
+        context['categories'] = categories[:2]
+        context['and_more'] = "And more"
+        return render(request, 'category_filter.html', context)
+    context['categories'] = categories[:2]
     return render(request,'category_filter.html', context)
 
 def sub_filter_view(request,sub_id):
     context = {}
-    subcategories = Products.objects.filter(subcategory_id=sub_id)
+    subcategories = CategoryModel.objects.filter(category_id=sub_id)[2:]
     context['subcategories'] = subcategories
     return render(request,'sub_filter.html',context)

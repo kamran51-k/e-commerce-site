@@ -1,4 +1,10 @@
-{% for subcategory in subcategories %}
-<li><a href="#" >{{ subcategory.name  }} </a></li>
+{%load static%}
+ <ul class="dropdown-menu">
+{%for i in subcategories %}
 
-{% endfor %}
+    <li><a href="#">{{ i.style }}</a></li>
+
+
+{%endfor%}
+   </ul>
+

@@ -1,49 +1,6 @@
 {%load static%}
 
-{%for i in categories%}
-                  <li><a href="#" class="sub_filter" data-id="{% url 'sub_filter_page' sub_id=i.id %}">{{i.style}} {%if i.subcategory %}<span class="caret"></span></a>{%endif%}
-                    {%if not i.category %}
-                    {%else%}
-                    <ul class="dropdown-menu subcategories" >
-                      
-                    
-                      
-                    </ul>
-                    
-                    {% endif %}
-                  {%endfor%}
-                  <script
-                  src="https://code.jquery.com/jquery-3.6.0.min.js"
-                  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                  crossorigin="anonymous"></script>
-                    <script>
-                        $(document).ready(function (){
-                            $('.sub_filter').mouseover(function (){
-                          let subcategoryId = $(this).data('id')
-                          console.log('Sagollllll')
-                             $.ajax({
-                            url: subcategoryId,
-                            method: "GET",
-                
-                            success: function (data) {
-                                if (data){
-                                    $(".subcategories").html(data)
-                                }
-                                else{
-                                    $(".subcategories").html("Yoxdur")
-                                }
-                
-                
-                
-                            },
-                
-                            error: function (xhr, err, msg) {
-                                console.log(xhr, err, msg);
-                            }
-                        });
-                    })
-                        })
-                    </script>
-                
-                  
-                
+{%for i in categories %}
+    <li><a href="#" >{{ i.style  }} </a></li>
+{%endfor%}
+
