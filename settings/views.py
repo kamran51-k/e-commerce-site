@@ -12,6 +12,11 @@ def home_view(request):
     context['category_queryset'] = category_queryset
     context['navbar_queryset'] = navbar_queryset
     context['product_queryset'] = product_queryset
+
+    if request.GET.get("category", None):
+        context['product_queryset'] = context['product_queryset'].filter(category__style = request.GET.get("category"))
+    
+
     
     return render(request,'index.html',context)
 

@@ -21,6 +21,8 @@ class CategoryModel(models.Model):
         return f'{self.style}'
         
 class Products(models.Model):
+    category = models.ForeignKey(CategoryModel, on_delete=CASCADE, blank=True, null=True, related_name="products")
+    image = models.ImageField(upload_to = "products/", null=True, blank=True)
     name = CharField(max_length=100,null=True,blank=True)
     price = IntegerField(null=True,blank=True)
 

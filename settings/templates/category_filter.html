@@ -1,5 +1,5 @@
 {%load static%}
 
 {%for i in categories %}
-    <li><a href="{{i.url}}">{{ i.style  }} </a></li>
+    <li><a href="/?category={{i.style}}">{{ i.style  }} </a></li>
 {%endfor%}
