@@ -201,7 +201,7 @@
                     <ul class="dropdown-menu categories" >
                       
                      
-                    <li><a href="#" data-slug="And more" data-url="{% url 'sub_filter_page' sub_id=i.id %}">{{ and_more  }} </a></li>
+        
                     </ul>
                     
                     {% endif %}
@@ -222,7 +222,7 @@
                 <!-- single slide item -->
                 <li>
                   <div class="seq-model">
-                    <img data-seq src="{%static 'asserts/img/slider/1.jpg'%}" alt="Men slide img" />
+                    <img data-seq src="#" alt="Men slide img" />
                   </div>
                   <div class="seq-title">
                    <span data-seq>Save Up to 75% Off</span>                
@@ -1099,34 +1099,6 @@
     </script>
 
 
-    <script>
-        $(document).ready(function (){
-            $('.category_filter').mouseover(function (){
-          let subCategoryUrls = $(this).data('url')
-
-             $.ajax({
-            url: subCategoryUrls,
-            method: "GET",
-
-            success: function (data) {
-                if (data){
-                    console.log(data)
-                    $(".categories").html(data)
-                }
-                else{
-                    $(".categories").html("Yoxdur")
-                }
-
-
-
-            },
-
-            error: function (xhr, err, msg) {
-                console.log(xhr, err, msg);
-            }
-        });
-    })
-        })
-    </script>
-
+{%block js%}
+{% endblock %}
   
