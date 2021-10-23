@@ -5,8 +5,103 @@
   <!-- / header section -->
   <!-- menu -->
   <!-- / slider -->
+        <!-- Start slider -->
+        
+        <section id="aa-slider">
+          <div class="aa-slider-area">
+            <div id="sequence" class="seq">
+              <div class="seq-screen">
+                <ul class="seq-canvas">
+                  <!-- single slide item -->
+                  {% for product in product_queryset %}
+                  <li>
+                    <div class="seq-model">
+                      <img data-seq src="{{product.image.url}}" alt="#" />
+                    </div>
+                    <div class="seq-title">
+                     <span data-seq>Save Up to 75% Off</span>                
+                      <h2 data-seq>{{product.name}}</h2>                
+                      <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
+                      <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+                    </div>
+                  </li>
+                  {%endfor%}                 
+                </ul>
+              </div>
+              <!-- slider navigation btn -->
+              <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
+                <a type="button" class="seq-prev" aria-label="Previous"><span class="fa fa-angle-left"></span></a>
+                <a type="button" class="seq-next" aria-label="Next"><span class="fa fa-angle-right"></span></a>
+              </fieldset>
+            </div>
+          </div>
+        </section>
   <!-- Start Promo section -->
- 
+  <section id="aa-promo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-promo-area">
+            <div class="row">
+              <!-- promo left -->
+              <div class="col-md-5 no-padding">                
+                <div class="aa-promo-left">
+                  <div class="aa-promo-banner">                    
+                    <img src="img/promo-banner-1.jpg" alt="img">                    
+                    <div class="aa-prom-content">
+                      <span>75% Off</span>
+                      <h4><a href="#">For Women</a></h4>                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- promo right -->
+              <div class="col-md-7 no-padding">
+                <div class="aa-promo-right">
+                  <div class="aa-single-promo-right">
+                    <div class="aa-promo-banner">                      
+                      <img src="img/promo-banner-3.jpg" alt="img">                      
+                      <div class="aa-prom-content">
+                        <span>Exclusive Item</span>
+                        <h4><a href="#">For Men</a></h4>                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aa-single-promo-right">
+                    <div class="aa-promo-banner">                      
+                      <img src="img/promo-banner-2.jpg" alt="img">                      
+                      <div class="aa-prom-content">
+                        <span>Sale Off</span>
+                        <h4><a href="#">On Shoes</a></h4>                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aa-single-promo-right">
+                    <div class="aa-promo-banner">                      
+                      <img src="img/promo-banner-4.jpg" alt="img">                      
+                      <div class="aa-prom-content">
+                        <span>New Arrivals</span>
+                        <h4><a href="#">For Kids</a></h4>                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aa-single-promo-right">
+                    <div class="aa-promo-banner">                      
+                      <img src="img/promo-banner-5.jpg" alt="img">                      
+                      <div class="aa-prom-content">
+                        <span>25% Off</span>
+                        <h4><a href="#">For Bags</a></h4>                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- / Promo section -->
   <!-- Products section -->
   <!-- / Products section -->
@@ -48,7 +143,7 @@
                         {% for product in product_queryset %}
                         <li>
                           <figure>
-                            <a class="aa-product-img" href="#"><img src="{{product.image.url}}" alt=""></a>
+                            <a class="aa-product-img" href="#"><img src="{{product.image.url}}" alt="" style="border-right-style: solid;padding-right: 233px;border-right-width: 1000px;"></a>
                             <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                               <figcaption>
                               <h4 class="aa-product-title"><a href="#">{{product.name}}</a></h4>
