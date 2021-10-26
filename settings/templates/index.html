@@ -13,15 +13,15 @@
               <div class="seq-screen">
                 <ul class="seq-canvas">
                   <!-- single slide item -->
-                  {% for product in product_queryset %}
+                  {% for images in backgroundimage_queryset %}
                   <li>
                     <div class="seq-model">
-                      <img data-seq src="{{product.image.url}}" alt="#" />
+                      <img data-seq src="{{images.background_image.url}}" alt="#" />
                     </div>
                     <div class="seq-title">
-                     <span data-seq>Save Up to 75% Off</span>                
-                      <h2 data-seq>{{product.name}}</h2>                
-                      <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
+                     <span data-seq>Save Up to {{images.sale}} Off</span>                
+                      <h2 data-seq>{{images.title}}</h2>                
+                      <p data-seq>{{images.image_text}}</p>
                       <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
                     </div>
                   </li>
@@ -44,53 +44,22 @@
           <div class="aa-promo-area">
             <div class="row">
               <!-- promo left -->
+              {%for i in image_queryset%}
               <div class="col-md-5 no-padding">                
                 <div class="aa-promo-left">
                   <div class="aa-promo-banner">                    
-                    <img src="img/promo-banner-1.jpg" alt="img">                    
+                    <img src="{{i.images.url}}" alt="img">                    
                     <div class="aa-prom-content">
-                      <span>75% Off</span>
-                      <h4><a href="#">For Women</a></h4>                      
+                      <span>{{i.sale}}</span>
+                      <h4><a href="#">{{i.title}}</a></h4>                      
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- promo right -->
-              <div class="col-md-7 no-padding">
-                <div class="aa-promo-right">
-                  <div class="aa-single-promo-right">
-                    <div class="aa-promo-banner">                      
-                      <img src="img/promo-banner-3.jpg" alt="img">                      
+              {%endfor%}                
                       <div class="aa-prom-content">
-                        <span>Exclusive Item</span>
-                        <h4><a href="#">For Men</a></h4>                        
-                      </div>
-                    </div>
-                  </div>
-                  <div class="aa-single-promo-right">
-                    <div class="aa-promo-banner">                      
-                      <img src="img/promo-banner-2.jpg" alt="img">                      
-                      <div class="aa-prom-content">
-                        <span>Sale Off</span>
-                        <h4><a href="#">On Shoes</a></h4>                        
-                      </div>
-                    </div>
-                  </div>
-                  <div class="aa-single-promo-right">
-                    <div class="aa-promo-banner">                      
-                      <img src="img/promo-banner-4.jpg" alt="img">                      
-                      <div class="aa-prom-content">
-                        <span>New Arrivals</span>
-                        <h4><a href="#">For Kids</a></h4>                        
-                      </div>
-                    </div>
-                  </div>
-                  <div class="aa-single-promo-right">
-                    <div class="aa-promo-banner">                      
-                      <img src="img/promo-banner-5.jpg" alt="img">                      
-                      <div class="aa-prom-content">
-                        <span>25% Off</span>
-                        <h4><a href="#">For Bags</a></h4>                        
+                        <span></span>
+                        <h4><a href="#"></a></h4>                        
                       </div>
                     </div>
                   </div>
@@ -147,7 +116,7 @@
                             <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                               <figcaption>
                               <h4 class="aa-product-title"><a href="#">{{product.name}}</a></h4>
-                              <span class="aa-product-price">{{product.price}}</span><span class="aa-product-price"><del>{{product.price}}</del></span>
+                              <span class="aa-product-price">${{product.price}}</span><span class="aa-product-price"><del>${{product.delete_price}}</del></span>
                             </figcaption>
                           </figure>                        
                           <div class="aa-product-hvr-content">
