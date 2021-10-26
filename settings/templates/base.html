@@ -194,16 +194,16 @@
                 <!-- Left nav -->
                 <ul class="nav navbar-nav">
                   {% for navbar in navbar_queryset %}
-                  <li><a href="#">{{navbar.title}}<span class="caret"> </span></a>
+                  <li><a href="#">{{navbar.title}} {% if navbar.category%}<span class="caret"></span>{%endif%}</a>
                     {% if navbar.category%}
                     <ul class="dropdown-menu">  
-                      {% for category in navbar.categorymodel_set.all|slice:":2"%}              
+                      {% for category in navbar.categorymodel_set.all|slice:":8"%}              
                       <li><a href="#">{{category.style}}</a></li>
                       {% endfor %}
-                      {% if navbar.categorymodel_set.all|length > 2 %}
+                      {% if navbar.categorymodel_set.all|length > 8 %}
                       <li><a href="#">And more.. <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                          {% for category in navbar.categorymodel_set.all|slice:"2:"%}
+                          {% for category in navbar.categorymodel_set.all|slice:"8:"%}
                           <li><a href="#">{{category.style}}</a></li> 
                           {% endfor %}                                     
                         </ul>
@@ -212,14 +212,8 @@
                     </ul>
                     {% endif %}
                   </li>
+                  
                   {% endfor %}
-                  <li><a href="contact.html">Contact</a></li>
-                  <li><a href="#">Pages <span class="caret"></span></a>
-                    <ul class="dropdown-menu">                
-                      <li><a href="product.html">Shop Page</a></li>
-                      <li><a href="product-detail.html">Shop Single</a></li>                
-                      <li><a href="404.html">404 Page</a></li>                
-                    </ul>
                   </li>
                 </ul>
               </div><!--/.nav-collapse -->
