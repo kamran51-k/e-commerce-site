@@ -1,13 +1,10 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields import CharField, IntegerField, URLField
-
-
 # Create your models here.
 class NavbarModel(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
     category = models.BooleanField(default=False)
-    slice = models.IntegerField(null=True,blank=True)
     def __str__(self):
         return f'{self.title}'
 
@@ -37,3 +34,15 @@ class ImageModel(models.Model):
     sale = models.CharField(max_length=100,null=True,blank=True)
     title = models.CharField(max_length=100,null=True,blank=True)
     
+
+
+
+
+
+
+
+
+
+
+
+
