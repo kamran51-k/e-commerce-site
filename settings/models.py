@@ -5,6 +5,7 @@ from django.db.models.fields import CharField, IntegerField, URLField
 class NavbarModel(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
     category = models.BooleanField(default=False)
+    url = models.URLField()
     def __str__(self):
         return f'{self.title}'
 
@@ -35,6 +36,12 @@ class ImageModel(models.Model):
     title = models.CharField(max_length=100,null=True,blank=True)
     
 
+
+class ContactModel(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=14)
+    text = models.TextField()
 
 
 
