@@ -1,9 +1,7 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields import CharField, IntegerField, URLField
-from django.contrib.auth import get_user_model
 # Create your models here.
-User = get_user_model()
 class NavbarModel(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
     category = models.BooleanField(default=False)
@@ -20,7 +18,6 @@ class CategoryModel(models.Model):
         return f'{self.style}'
         
 class Products(models.Model):
-    user_id = models.ForeignKey(User,models.CASCADE,null=True,blank=True)
     category = models.ForeignKey(CategoryModel, on_delete=CASCADE, blank=True, null=True, related_name="products")
     image = models.ImageField(upload_to = "products/", null=True, blank=True)
     name = models.CharField(max_length=100,null=True,blank=True)
@@ -37,17 +34,16 @@ class ImageModel(models.Model):
     images = models.ImageField(upload_to="images_folder",null=True,blank=True)
     sale = models.CharField(max_length=100,null=True,blank=True)
     title = models.CharField(max_length=100,null=True,blank=True)
+    
+
+
 class ContactModel(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone_number = models.CharField(max_length=14)
     text = models.TextField()
-        
-class FooterModel(models.Model):
-    footer_name  = models.CharField(max_length=100,null=True,blank=True)
 
-class DownFooterModel(models.Model):
-    down_name = models.CharField(max_length=100,null=True,blank=True)
+
 
 
 
