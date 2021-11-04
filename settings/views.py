@@ -1,7 +1,9 @@
 from django.http import request
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import ContactForm 
 
-from settings.models import CategoryModel, BackgroundImageModel, ImageModel,NavbarModel, Products
+
+from settings.models import CategoryModel, BackgroundImageModel, ImageModel,NavbarModel, Products, ContactModel
 
 # Create your views here.
 def home_view(request):
@@ -35,3 +37,22 @@ def product_view(request,category_id):
     products = Products.objects.filter(product_id=category_id)
     context['products'] = products
     return render(request,'product.html',context)
+
+
+def contact_view(request):
+    context = {}
+    form = ContactForm()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home_page')
+        else:
+            context['form'] = form
+            return render(request, 'contact.html',context)
+
+    
+    navbar_queryset = NavbarModel.objects.all()
+    context['navbar_queryset'] = navbar_queryset
+    context['form'] = form
+    return render(request, 'contact.html',context)
