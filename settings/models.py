@@ -34,9 +34,6 @@ class ImageModel(models.Model):
     images = models.ImageField(upload_to="images_folder",null=True,blank=True)
     sale = models.CharField(max_length=100,null=True,blank=True)
     title = models.CharField(max_length=100,null=True,blank=True)
-    
-
-
 class ContactModel(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
