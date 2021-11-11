@@ -193,19 +193,19 @@
               <div class="navbar-collapse collapse">
                 <!-- Left nav -->
                 <ul class="nav navbar-nav">
-                  <li><a href="">Home</a></li>
+                  <li><a href="http://127.0.0.1:8000">Home</a></li>
                   {% for navbar in navbar_queryset %}
                   <li><a href="{{ navbar.url }}">{{navbar.title}} {% if navbar.category%}<span class="caret"></span>{%endif%}</a>
                     {% if navbar.category%}
                     <ul class="dropdown-menu">  
                       {% for category in navbar.categorymodel_set.all|slice:":8"%}              
-                      <li><a href="#">{{category.style}}</a></li>
+                      <li><a href="">{{category.style}}</a></li>
                       {% endfor %}
                       {% if navbar.categorymodel_set.all|length > 8 %}
-                      <li><a href="#">And more.. <span class="caret"></span></a>
+                      <li><a href="">And more.. <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                           {% for category in navbar.categorymodel_set.all|slice:"8:"%}
-                          <li><a href="#">{{category.style}}</a></li> 
+                          <li><a href="">{{category.style}}</a></li> 
                           {% endfor %}                                     
                         </ul>
                       </li>

@@ -35,8 +35,6 @@ class ImageModel(models.Model):
     sale = models.CharField(max_length=100,null=True,blank=True)
     title = models.CharField(max_length=100,null=True,blank=True)
     
-
-
 class ContactModel(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
