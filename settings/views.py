@@ -20,9 +20,7 @@ def home_view(request):
     context['image_queryset'] = image_queryset
     if request.GET.get("category", None):
         context['product_queryset'] = context['product_queryset'].filter(category__style = request.GET.get("category"))
-    
-
-    
+         
     return render(request,'index.html',context)
 
 
@@ -36,7 +34,7 @@ def product_view(request,category_id):
     context={}
     products = Products.objects.filter(product_id=category_id)
     context['products'] = products
-    return render(request,'product.html',context)
+    return render(request,'index.html',context)
 
 
 def contact_view(request):
