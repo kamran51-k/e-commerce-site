@@ -36,25 +36,23 @@ def product_view(request,category_id):
     context['products'] = products
     return render(request,'index.html',context)
 
-
 def contact_view(request):
     context = {}
-    form = ContactForm()
     if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home_page')
-        else:
-            context['form'] = form
-            return render(request, 'contact.html',context)
-
-    
-    navbar_queryset = NavbarModel.objects.all()
-    context['navbar_queryset'] = navbar_queryset
-    context['form'] = form
-    return render(request, 'contact.html',context)
-
+        name = request.POST.get('name',None)
+        email = request.POST.get('email',None)
+        subject = request.POST.get('subject',None)
+        message = request.POST.get('message',None)
+        ContactModel.objects.create(
+            name = name,
+            email = email,
+            subject = subject,
+            message = message
+        )
+        return redirect('home_page')
+    else:
+        return render(request,'contact.html',context) 
+    return render(request,'contact.html',context)
 def creator_view(request):
     context = {}
     creator_queryset = CreatorModel.objects.all()

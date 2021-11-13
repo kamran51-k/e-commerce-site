@@ -39,8 +39,8 @@ class ImageModel(models.Model):
 class ContactModel(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    phone_number = models.CharField(max_length=14)
-    text = models.TextField()
+    subject = models.CharField(max_length=100)
+    message = models.CharField(max_length=1000)
 
 class CreatorModel(models.Model):
     name = models.CharField(max_length=30, null=True, blank=True)

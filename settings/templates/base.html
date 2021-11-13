@@ -193,7 +193,7 @@
               <div class="navbar-collapse collapse">
                 <!-- Left nav -->
                 <ul class="nav navbar-nav">
-                  <li><a href="{% url 'home_page' %}">Home</a></li>
+                  <li><a href="{%url 'home_page' %}">Home</a></li>
                   {% for navbar in navbar_queryset %}
                   <li><a href="{{ navbar.url }}">{{navbar.title}} {% if navbar.category%}<span class="caret"></span>{%endif%}</a>
                     {% if navbar.category%}
