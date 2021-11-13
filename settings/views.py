@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm 
 
 
-from settings.models import CategoryModel, BackgroundImageModel, ImageModel,NavbarModel, Products, ContactModel
+from settings.models import CategoryModel, BackgroundImageModel, CreatorModel, ImageModel,NavbarModel, Products, ContactModel
 
 # Create your views here.
 def home_view(request):
@@ -54,3 +54,9 @@ def contact_view(request):
     context['navbar_queryset'] = navbar_queryset
     context['form'] = form
     return render(request, 'contact.html',context)
+
+def creator_view(request):
+    context = {}
+    creator_queryset = CreatorModel.objects.all()
+    context['creator_queryset'] = creator_queryset
+    return render(request, 'index.html',context)

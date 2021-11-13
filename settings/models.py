@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.base import Model
 from django.db.models.deletion import CASCADE
 from django.db.models.fields import CharField, IntegerField, URLField
 # Create your models here.
@@ -40,6 +41,13 @@ class ContactModel(models.Model):
     email = models.EmailField()
     phone_number = models.CharField(max_length=14)
     text = models.TextField()
+
+class CreatorModel(models.Model):
+    name = models.CharField(max_length=30, null=True, blank=True)
+    profession = models.CharField(max_length=30, null=True, blank=True)
+    photo = models.ImageField(upload_to="images_folder", null=True, blank=True)
+    about = models.CharField(max_length=100, null=True, blank=True)
+
 
 
 
