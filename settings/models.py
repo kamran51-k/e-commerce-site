@@ -36,17 +36,22 @@ class ImageModel(models.Model):
     sale = models.CharField(max_length=100,null=True,blank=True)
     title = models.CharField(max_length=100,null=True,blank=True)
     
+<<<<<<< Updated upstream
 class ContactModel(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     subject = models.CharField(max_length=100)
     message = models.CharField(max_length=1000)
+=======
+>>>>>>> Stashed changes
 
 class CreatorModel(models.Model):
     name = models.CharField(max_length=30, null=True, blank=True)
     profession = models.CharField(max_length=30, null=True, blank=True)
+    company = models.CharField(max_length=30, null=True, blank=True)
     photo = models.ImageField(upload_to="images_folder", null=True, blank=True)
     about = models.CharField(max_length=100, null=True, blank=True)
+
 
 
 

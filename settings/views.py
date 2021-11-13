@@ -1,9 +1,9 @@
 from django.http import request
 from django.shortcuts import render, redirect
-from .forms import ContactForm 
 
 
-from settings.models import CategoryModel, BackgroundImageModel, CreatorModel, ImageModel,NavbarModel, Products, ContactModel
+
+from settings.models import CategoryModel, BackgroundImageModel, CreatorModel, ImageModel,NavbarModel, Products
 
 # Create your views here.
 def home_view(request):
@@ -13,11 +13,13 @@ def home_view(request):
     product_queryset = Products.objects.all()
     backgroundimage_queryset = BackgroundImageModel.objects.all()
     image_queryset = ImageModel.objects.all()
+    creator_queryset = CreatorModel.objects.all()
     context['category_queryset'] = category_queryset
     context['navbar_queryset'] = navbar_queryset
     context['product_queryset'] = product_queryset
     context['backgroundimage_queryset'] = backgroundimage_queryset
     context['image_queryset'] = image_queryset
+    context['creator_queryset'] = creator_queryset
     if request.GET.get("category", None):
         context['product_queryset'] = context['product_queryset'].filter(category__style = request.GET.get("category"))
          
@@ -36,6 +38,7 @@ def product_view(request,category_id):
     context['products'] = products
     return render(request,'index.html',context)
 
+<<<<<<< Updated upstream
 def contact_view(request):
     context = {}
     if request.method == 'POST':
@@ -58,3 +61,5 @@ def creator_view(request):
     creator_queryset = CreatorModel.objects.all()
     context['creator_queryset'] = creator_queryset
     return render(request, 'index.html',context)
+=======
+>>>>>>> Stashed changes

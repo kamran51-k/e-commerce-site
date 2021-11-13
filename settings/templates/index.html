@@ -738,20 +738,20 @@
           <div class="aa-testimonial-area">
             <ul class="aa-testimonial-slider">
               <!-- single slide -->
-              {% for creator in creator_queryset %}
               <li>
+                {% for creator in creator_queryset %}
                 <div class="aa-testimonial-single">
-                <img class="aa-testimonial-img" src="img/testimonial-img-2.jpg" alt="testimonial img">
+                <img class="aa-testimonial-img" src="{{creator.photo.url}}" alt="testimonial img">
                   <span class="fa fa-quote-left aa-testimonial-quote"></span>
                   <p>{{ creator.about }}</p>
                   <div class="aa-testimonial-info">
                     <p>{{ creator.name }}</p>
-                    <span>{{ creator.about }}</span>
-                    <a>{{ creator.about }}</a>
+                    <span>{{ creator.profession }}</span>
+                    <span>{{ creator.company }}</span>
                   </div>
                 </div>
+                {% endfor %}
               </li>
-              {% endfor %}
             </ul>
           </div>
         </div>
