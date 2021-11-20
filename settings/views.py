@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 
 
 
-from settings.models import CategoryModel, BackgroundImageModel, CreatorModel, ImageModel,NavbarModel, Products
+from settings.models import CategoryModel, BackgroundImageModel, ClientBrandModel, ContactUsModel, CreatorModel, ImageModel,NavbarModel, Products, ContactModel
 
 # Create your views here.
 def home_view(request):
@@ -14,12 +14,18 @@ def home_view(request):
     backgroundimage_queryset = BackgroundImageModel.objects.all()
     image_queryset = ImageModel.objects.all()
     creator_queryset = CreatorModel.objects.all()
+    client_brand_queryset = ClientBrandModel.objects.all()
+    contact_us_view = ContactUsModel.objects.all()
+    # products = Products.objects.filter(product_id=category_id)
+    # context['products'] = products
     context['category_queryset'] = category_queryset
     context['navbar_queryset'] = navbar_queryset
     context['product_queryset'] = product_queryset
     context['backgroundimage_queryset'] = backgroundimage_queryset
     context['image_queryset'] = image_queryset
     context['creator_queryset'] = creator_queryset
+    context['client_brand_queryset'] = client_brand_queryset
+    context['contact_us_view'] = contact_us_view
     if request.GET.get("category", None):
         context['product_queryset'] = context['product_queryset'].filter(category__style = request.GET.get("category"))
          
@@ -32,13 +38,12 @@ def category_filter_view(request,navbar_id):
     context['categories'] = categories
     return render(request,'category_filter.html', context)
 
-def product_view(request,category_id):
-    context={}
-    products = Products.objects.filter(product_id=category_id)
-    context['products'] = products
-    return render(request,'index.html',context)
+# def product_view(request,category_id):
+#     context={}
+#     products = Products.objects.filter(product_id=category_id)
+#     context['products'] = products
+#     return render(request,'index.html',context)
 
-<<<<<<< Updated upstream
 def contact_view(request):
     context = {}
     if request.method == 'POST':
@@ -56,10 +61,11 @@ def contact_view(request):
     else:
         return render(request,'contact.html',context) 
     return render(request,'contact.html',context)
-def creator_view(request):
+
+
+def client_brand_view(request):
     context = {}
-    creator_queryset = CreatorModel.objects.all()
-    context['creator_queryset'] = creator_queryset
-    return render(request, 'index.html',context)
-=======
->>>>>>> Stashed changes
+    client_brand_queryset = ClientBrandModel.objects.all()
+    context['client_brand_queryset'] = client_brand_queryset
+    return render(request, 'index.html', context)
+ 

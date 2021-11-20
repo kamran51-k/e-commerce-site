@@ -6,7 +6,7 @@
   <!-- menu -->
   
  
-  <
+  
   <!-- / catg header banner section -->
 <!-- start contact section -->
  <section id="aa-contact">
@@ -60,13 +60,14 @@
                </div>
                <div class="col-md-4">
                  <div class="aa-contact-address-right">
-                   <address>
-                     <h4>DailyShop</h4>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum modi dolor facilis! Nihil error, eius.</p>
-                     <p><span class="fa fa-home"></span>Huntsville, AL 35813, USA</p>
-                     <p><span class="fa fa-phone"></span>+ 021.343.7575</p>
-                     <p><span class="fa fa-envelope"></span>Email: support@dailyshop.com</p>
-                   </address>
+                    {%for contact in contact_us_view %}
+                    <h3>{{contact.name}}</h3>
+                    <address>
+                      <p>{{contact.adress}}</p>
+                      <p><span class="fa fa-phone"></span>{{contact.number}}</p>
+                      <p><span class="fa fa-envelope"></span>{{contact.email}}</p>
+                    </address>
+                    {%endfor%}
                  </div>
                </div>
              </div>
@@ -148,18 +149,18 @@
               <div class="col-md-3 col-sm-6">
                 <div class="aa-footer-widget">
                   <div class="aa-footer-widget">
-                    <h3>Contact Us</h3>
+                    {%for contact in contact_us_view %}
+                    <h3>{{contact.name}}</h3>
                     <address>
-                      <p> 25 Astor Pl, NY 10003, USA</p>
-                      <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
-                      <p><span class="fa fa-envelope"></span>dailyshop@gmail.com</p>
+                      <p>{{contact.adress}}</p>
+                      <p><span class="fa fa-phone"></span>{{contact.number}}</p>
+                      <p><span class="fa fa-envelope"></span>{{contact.email}}</p>
                     </address>
                     <div class="aa-footer-social">
-                      <a href="#"><span class="fa fa-facebook"></span></a>
-                      <a href="#"><span class="fa fa-twitter"></span></a>
-                      <a href="#"><span class="fa fa-google-plus"></span></a>
-                      <a href="#"><span class="fa fa-youtube"></span></a>
+                      <a href=""><span class="{{contact.widgets}}"></span></a>
+                      
                     </div>
+                    {%endfor%}
                   </div>
                 </div>
               </div>
