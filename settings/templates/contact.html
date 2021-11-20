@@ -1,24 +1,6 @@
 {%extends 'base.html' %}
-{% load static %}
-{% load widget_tweaks%}
+{%load static%}
 {%block content%}
-
-  <body> 
-    <!-- wpf loader Two -->
-    <!-- <div id="wpf-loader-two">          
-      <div class="wpf-loader-two-inner">
-        <span>Loading</span>
-      </div>
-    </div>  -->
-    <!-- / wpf loader Two -->       
-    <!-- SCROLL TOP BUTTON -->
-    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
-    <!-- END SCROLL TOP BUTTON -->
-
-
-
- 
-  <!-- catg header banner section -->
   
   <!-- / catg header banner section -->
 <!-- start contact section -->
@@ -37,60 +19,50 @@
            </div>
            <!-- Contact address -->
            <div class="aa-contact-address">
+            <form id="contact" action="" method="post">
+              {%csrf_token%}
              <div class="row">
                <div class="col-md-8">
                  <div class="aa-contact-address-left">
                    <form class="comments-form contact-form" action="">
-                    <form id="contactForm" method = "POST" action = "{% url 'contact_page' %}">
-                      {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">                        
+                          <input name="name"  type="text" placeholder="Your Name" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">                        
+                          <input name="email"  type="email" placeholder="Email" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">                        
+                          <input name="subject"  type="text" placeholder="Subject" class="form-control">
+                        </div>
+                      </div>
+                    </form>
+                    </div>                  
                      
-                      <div class="form-floating">
-                          {% render_field form.name class="form-control" %}
-                          <!-- <input class="form-control" id="name" name='name' type="text" placeholder="Enter your name..." data-sb-validations="required" /> -->
-                          <label for="name">{{ form.name.label }}</label>
-                          <!-- <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div> -->
-                      </div> 
-                      <div class="form-floating">
-                          {% render_field form.email class="form-control" %}
-                          <label for="email">{{ form.email.label }}</label>
-                          <!-- <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                          <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div> -->
-                      </div>
-                      <div class="form-floating">
-                          {% render_field form.phone_number class="form-control" %}
-                          <!-- <input class="form-control" id="phone" type="tel" name = 'phone_number' placeholder="Enter your phone number..." data-sb-validations="required" /> -->
-                          <label for="phone"> {{ form.phone_number.label }} </label>
-                          <!-- <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div> -->
-                      </div>
-                      <div class="form-floating">
-                          {% render_field form.text class="form-control" %}
-                          <!-- <textarea class="form-control" id="message" name = 'text' placeholder="Enter your message here..." style="height: 12rem" data-sb-validations="required"></textarea> -->
-                          <label for="message">{{ form.text.label }}</label>
-                          <!-- <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div> -->
-                      </div>
-                      <br />
-                      
-                      <!---->
-                      <!-- This is what your users will see when the form-->
-                      <!-- has successfully submitted-->
-                      <!-- Submit error message-->
-                      <!---->
-                      <!-- <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>  -->
-                      <Submit Button-->
-                      <button class="btn btn-primary text-uppercase " id="submitButton" type="submit">Send</button>
-                  </form>
+                    <div class="form-group">                        
+                      <textarea  name="message" class="form-control" rows="3" placeholder="Message"></textarea>
+                    </div>
+                    <button class="aa-secondary-btn">Send</button>
                   </form>
                  </div>
                </div>
                <div class="col-md-4">
                  <div class="aa-contact-address-right">
-                   <address>
-                     <h4>DailyShop</h4>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum modi dolor facilis! Nihil error, eius.</p>
-                     <p><span class="fa fa-home"></span>Huntsville, AL 35813, USA</p>
-                     <p><span class="fa fa-phone"></span>+ 021.343.7575</p>
-                     <p><span class="fa fa-envelope"></span>Email: support@dailyshop.com</p>
-                   </address>
+                    {%for contact in contact_us_view %}
+                    <h3>{{contact.name}}</h3>
+                    <address>
+                      <p>{{contact.adress}}</p>
+                      <p><span class="fa fa-phone"></span>{{contact.number}}</p>
+                      <p><span class="fa fa-envelope"></span>{{contact.email}}</p>
+                    </address>
+                    {%endfor%}
                  </div>
                </div>
              </div>
@@ -172,18 +144,18 @@
               <div class="col-md-3 col-sm-6">
                 <div class="aa-footer-widget">
                   <div class="aa-footer-widget">
-                    <h3>Contact Us</h3>
+                    {%for contact in contact_us_view %}
+                    <h3>{{contact.name}}</h3>
                     <address>
-                      <p> 25 Astor Pl, NY 10003, USA</p>
-                      <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
-                      <p><span class="fa fa-envelope"></span>dailyshop@gmail.com</p>
+                      <p>{{contact.adress}}</p>
+                      <p><span class="fa fa-phone"></span>{{contact.number}}</p>
+                      <p><span class="fa fa-envelope"></span>{{contact.email}}</p>
                     </address>
                     <div class="aa-footer-social">
-                      <a href="#"><span class="fa fa-facebook"></span></a>
-                      <a href="#"><span class="fa fa-twitter"></span></a>
-                      <a href="#"><span class="fa fa-google-plus"></span></a>
-                      <a href="#"><span class="fa fa-youtube"></span></a>
+                      <a href=""><span class="{{contact.widgets}}"></span></a>
+                      
                     </div>
+                    {%endfor%}
                   </div>
                 </div>
               </div>
